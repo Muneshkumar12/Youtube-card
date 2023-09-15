@@ -10,18 +10,18 @@ var user = [
         views: "32M views. 1 week ago"
     },
     {
-        video: "https://www.youtube.com/embed/PPKtC_YJiK4",
-        logo: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg",
-        heading: "How Pakistani Army Controls Politics in Pakistan? | Nitish Rajput | Hindi",
-        fullName: "ABC",
+        video: "https://www.youtube.com/embed/Xms6aKyrHmM",
+        logo: "https://yt3.googleusercontent.com/ytc/AOPolaQ0QP5Nk3TGXS8y-Hr7mo1XNKai7ngGvfZOPvAv=s900-c-k-c0x00ffffff-no-rj",
+        heading: "6 - 6 - 6 | Shahid Afridi vs Chris Woakes | Pakistan vs England | 2nd T20I 2015 | PCB | MA2A",
+        fullName: "Sport Central",
         verified: false,
-        views: "235k views. 1 week ago"
+        views: "3.5M views. 5months ago"
     },
     {
-        video: "https://www.youtube.com/embed/C_CZCsj_x9g",
-        logo: "https://imgv3.fotor.com/images/gallery/Realistic-Male-Profile-Picture.jpg",
-        heading: "Aamir khan on '3 idiots' Movie and Chatur Ramalingam | Aap Ki Adalat",
-        fullName: "Dhruv Rathee",
+        Image: "https://media.istockphoto.com/id/184944186/photo/quaid-e-azam.jpg?s=612x612&w=0&k=20&c=7mRHDKfBWbpmiTto_w_oMm4EeboU9tEDO_JXke01P5I=",
+        logo: "https://w7.pngwing.com/pngs/676/989/png-transparent-muhammad-ali-jinnah-thumbnail.png",
+        heading: "He is revered in Pakistan as the Quaid-e-Azam (Great Leader) and Baba-e-Qaum (Father of the Nation). His birthday is observed as a national holiday in ...",
+        fullName: "Quaid-e-Azam",
         verified: true,
         views: "32M views. 1 week ago"
     },
@@ -34,11 +34,11 @@ var user = [
         views: "3M views. 2day ago"
     },
     {
-        video: "https://www.youtube.com/embed/Y8MCD_0G5ws",
-        logo: "https://yt3.googleusercontent.com/ytc/AOPolaRk10Eo9r4O8lRUeBSwAbNmfdlqkzM4NZJqjvpK4w=s900-c-k-c0x00ffffff-no-rj",
+        Image: "https://hips.hearstapps.com/hmg-prod/images/sunset-at-the-pyramids-giza-cairo-egypt-royalty-free-image-1588090066.jpg",
+        logo: "https://t3.ftcdn.net/jpg/00/98/99/90/360_F_98999018_ciSefrfzn3803uakMljzbcyEfXFf1iPT.jpg",
         heading: "How Ancient Engineers built Impossible Pyramids 4500 Years Ago",
-        fullName: "Zem TV",
-        verified: true,
+        fullName: "Pyramids",
+        verified: false,
         views: "21M views. 2 year ago"
     },
     {
@@ -46,14 +46,14 @@ var user = [
         logo: "https://yt3.googleusercontent.com/ytc/AOPolaR6hT52k7hpkMWXfQhW1Qa9o_k6WiGbw5l-lYVY=s900-c-k-c0x00ffffff-no-rj",
         heading: "Mahindra Thar LX RWD 2023- ₹11.5 lakh | Real-life review",
         fullName: "Namste Car",
-        verified: false,
+        verified: true,
         views: "231k views. 2 week ago"
     },
     {
-        video: "https://www.youtube.com/embed/c-u2MHAosiQ",
-        logo: "https://yt3.googleusercontent.com/ytc/AOPolaTjKN2zK4t14wgO9huLJ0CqdkyjVyxc9a0phhLe=s900-c-k-c0x00ffffff-no-rj",
+        Image: "https://img-aws.ehowcdn.com/560x560p/s3-us-west-1.amazonaws.com/contentlab.studiod/getty/98f3a9c4d5774269baac0f5d9358b27c",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0HDA9pFVR1ukp3VNbWOe-VNRfISIHhXMdoA&usqp=CAU",
         heading: "Wonders of Amazon Jungle | Urdu/Hindi",
-        fullName: "BigBang Studio",
+        fullName: "Jungle",
         verified: true,
         views: "2.4M views. 1 year ago"
     },
@@ -85,9 +85,18 @@ for(i=0; i<user.length; i++){
     col.appendChild(card);
     card.setAttribute("class" , "card");
     // iframe
-    var iframe = document.createElement("iframe");
-    card.appendChild(iframe);
-    iframe.setAttribute("src" , user[i].video);
+    if(user[i].video){
+        var iframe = document.createElement("iframe");
+        card.appendChild(iframe);
+        iframe.setAttribute("src" , user[i].video);
+        iframe.setAttribute("class" , "iframe");
+    }else{
+        var image = document.createElement("img");
+        card.appendChild(image);
+        image.setAttribute("src" , user[i].Image)
+        image.setAttribute("class" , "image")
+    }
+  
     // data
     var data = document.createElement("div");
     card.appendChild(data);
@@ -107,11 +116,11 @@ for(i=0; i<user.length; i++){
     // heading
     var heading = document.createElement("h5");
     otherData.appendChild(heading);
-    heading.innerHTML = user[i].heading;
-    if(user[i].heading.length >= 20){
+    if(user[i].heading.length >= 58){
     heading.innerHTML = user[i].heading.slice(0,58) + "...";
-       
-    }else{}
+    }else{
+          heading.innerHTML = user[i].heading;
+    }
     // fullname
     var fullName = document.createElement("span");
     otherData.appendChild(fullName);
@@ -121,7 +130,7 @@ for(i=0; i<user.length; i++){
         var verified = document.createElement("img");
         fullName.appendChild(verified);
         verified.setAttribute("src" ,"https://cdn-icons-png.flaticon.com/512/6928/6928921.png");
-    }else{}
+    }
     // views
     var views = document.createElement("span");
     otherData.appendChild(views);
